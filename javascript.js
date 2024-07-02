@@ -36,7 +36,7 @@ let alienRows = 2;
 let alienColumns = 3;
 let alienCount = 0;
 let alienVelocityX = 1; //alien movespeed
- 
+
 
 //bullets
 let bulletArray = [];
@@ -44,6 +44,17 @@ let bulletVelocityY = -10; //bulet move speed
 
 let score = 0;
 let gameOver = false;
+let pause = false;
+
+//random image picker
+var rdmImg = ['/img/alien-cyan.png', '/img/alien-magenta.png', '/img/alien-yellow.png','/img/alien.png'];
+var rdmImg = rdmImg[Math.floor(Math.random()*4)];
+console.log(rdmImg)
+
+function getRandomImage() {
+    var num = Math.floor( Math.random() * 5);
+    var img = rdmImg;
+}
 
 window.onload = function() {
     board = document.getElementById("board")
@@ -63,7 +74,7 @@ window.onload = function() {
     }
     
     alienImg = new Image()
-    alienImg.src = "/img/alien.png";
+    alienImg.src = [rdmImg];
 
     createAliens();
 
@@ -76,7 +87,7 @@ window.onload = function() {
 function update(){
     requestAnimationFrame(update);
 
-    if (gameOver){
+    if(gameOver == true){
         return;
     }
     context.clearRect(0, 0, board.width, board.height)
@@ -102,6 +113,7 @@ function update(){
                 }
             }
             context.drawImage(alienImg, alien.x, alien.y, alien.width, alien.height)
+            console.log(rdmImg)
         
             if(alien.y >= ship.y){
                 gameOver = true;
@@ -153,13 +165,10 @@ function update(){
 
 }
 
- 
-
 function moveShip(e) {
-    if(gameOver){
+    if(gameOver == true){
         return;
     }
-        
     if (e.code == "ArrowLeft" && ship.x - shipVelocityX >= 0) {
         ship.x -= shipVelocityX; //move left
     }
@@ -172,7 +181,7 @@ function createAliens() {
     for (let c = 0; c < alienColumns; c++) {
         for (let r = 0; r < alienRows; r++) {
             let alien = {
-                img :alienImg,
+                img :getRandomImage,
                 x : alienX + c*alienWidth,
                 y : alienY + r*alienHeight,
                 width : alienWidth,
@@ -187,10 +196,10 @@ function createAliens() {
 }
 
 function shoot(e) {
-    if(gameOver){
+    if(gameOver == true){
         return;
     }
-    if (e.code == "Space"){
+     if(e.code == "Space"){
         //shoot
         let bullet = {
             x : ship.x + shipWidth*15/32,
@@ -209,3 +218,18 @@ function detectCollision(a, b) {
         a.y < b.y + b.height &&     //a's top left corner doesn't reach b's bottom left corner
         a.y + a.height > b.y;       // a's bottom left corner passes b's top left corner
 }
+
+/*window.onload = function() {
+    document.getElementById("play").onclick = function() {
+        pause = false;
+    }
+    document.getElementById("pause").onclick = function() {
+        pause = true;
+            let button = this; // 'this' refers to the clicked button
+            if (button.textContent === "Pause") {
+                button.textContent = "Resume";
+            } else {
+                button.textContent = "Pause";
+            }
+    }
+}*/

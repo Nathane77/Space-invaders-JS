@@ -1,8 +1,52 @@
 body{
+    top: 0;
+    left: 0;
     font-family: 'Courier New', Courier, monospace;
     text-align: center;
     background-color: rgb(32, 30, 58);
 }
+
+h1{
+    color: rgb(99, 1, 99);
+}
+
+html{
+    top: 0;
+    left: 0;
+}
+
  #board{
     background-color: black;
- }
+}
+
+button{
+    background-color: rgb(99, 1, 99);
+    color: #FFFFFF;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 10px;
+    outline: none;
+    text-decoration: none;
+}
+
+#split{
+    position:block;
+    display:flex;
+    height: 2px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    left: 0;
+    width: 100%;
+    background-color: rgb(99, 1, 99);
+}
+
+#buttons{
+    display: flex;
+    margin: 16px;
+    justify-content: center;
+}
+
+#menu{
+    margin-top: 16px;
+}
