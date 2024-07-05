@@ -9,13 +9,18 @@
     </head>
         <body>
             <H1>Space Invaders</H1>
-            <canvas id="board"></canvas>
+            <div id="screen">
+                <canvas id="board"></canvas>
+                <div id="pauselogo">
+                    <h2 >PAUSE</h2>
+                </div>
+            </div>
             <div id="menu">
                 <div id="split"></div>
                 <div id="buttons">
-                    <button id="play">play</button>
-                    <button id="pause">Pause</button>
+                    <button tabindex="-1" id="play">play</button>
+                    <button tabindex="-1" id="pause">Pause</button>
                 </div>
             </div>
         </body>
-</html>
+</html> 

@@ -234,7 +234,6 @@ function detectCollision(a, b) {
 
 
 function stop(){
-    console.log("test")
     document.getElementById("play").onclick = function() {
         pause = false;
       }
@@ -244,9 +243,11 @@ function stop(){
             if (button.textContent === "Pause") {
                 button.textContent = "Resume";
                 pause = true;
+                document.getElementById("pauselogo").style.display = "flex"
             } else {
                 button.textContent = "Pause";
-                pause = false
+                pause = false;
+                document.getElementById("pauselogo").style.display = "none";
             }
     }
 }

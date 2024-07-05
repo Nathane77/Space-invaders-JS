@@ -15,6 +15,13 @@ html{
     left: 0;
 }
 
+#screen{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
  #board{
     background-color: black;
 }
@@ -45,6 +52,22 @@ button{
     display: flex;
     margin: 16px;
     justify-content: center;
+}
+
+#pauselogo{
+    display: none;
+    color: 	#630163;
+    z-index: 1;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    animation: blinker 1.3s linear infinite;
+
+}
+@keyframes blinker {
+    50% {
+        opacity: 10%;
+    }
 }
 
 #menu{
