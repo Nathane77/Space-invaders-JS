@@ -61,6 +61,7 @@ window.onload = function() {
     board.width = boardWidth
     board.height = boardHeight
     context = board.getContext("2d") // used for drawing on the board
+    stop();
 
     //draw initial ship
     //context.fillStyle="green";
@@ -75,6 +76,10 @@ window.onload = function() {
     
     alienImg = new Image()
     alienImg.src = [rdmImg];
+    /*array.forEach(element => rdmImg {
+        
+    });*/
+    
 
     createAliens();
 
@@ -86,7 +91,9 @@ window.onload = function() {
 
 function update(){
     requestAnimationFrame(update);
-
+    if(pause == true){
+        return;
+    }
     if(gameOver == true){
         return;
     }
@@ -166,6 +173,9 @@ function update(){
 }
 
 function moveShip(e) {
+    if(pause == true){
+        return;
+    }
     if(gameOver == true){
         return;
     }
@@ -196,6 +206,9 @@ function createAliens() {
 }
 
 function shoot(e) {
+    if(pause == true){
+        return;
+    }
     if(gameOver == true){
         return;
     }
@@ -219,17 +232,21 @@ function detectCollision(a, b) {
         a.y + a.height > b.y;       // a's bottom left corner passes b's top left corner
 }
 
-/*window.onload = function() {
+
+function stop(){
+    console.log("test")
     document.getElementById("play").onclick = function() {
         pause = false;
-    }
+      }
     document.getElementById("pause").onclick = function() {
         pause = true;
             let button = this; // 'this' refers to the clicked button
             if (button.textContent === "Pause") {
                 button.textContent = "Resume";
+                pause = true;
             } else {
                 button.textContent = "Pause";
+                pause = false
             }
     }
-}*/
+}
